@@ -4,12 +4,12 @@ use crate::Instant;
 use const_fn::const_fn;
 use core::{
     cmp::Ordering,
+    convert::{TryFrom, TryInto},
     ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign},
     time::Duration as StdDuration,
 };
-use standback::convert::{TryFrom, TryInto};
 #[allow(unused_imports)]
-use standback::prelude::*;
+use standback::prelude::*; // duration_float (1.38)
 
 /// A span of time with nanosecond precision.
 ///
