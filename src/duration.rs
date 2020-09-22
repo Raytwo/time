@@ -161,8 +161,11 @@ impl Duration {
     /// assert!(0.seconds().is_zero());
     /// assert!(!1.nanoseconds().is_zero());
     /// ```
+    ///
+    /// This function is `const fn` when using rustc >= 1.46.
+    #[const_fn("1.46")]
     pub const fn is_zero(self) -> bool {
-        (self.seconds == 0) & (self.nanoseconds == 0)
+        self.seconds == 0 && self.nanoseconds == 0
     }
 
     /// Check if a duration is negative.
@@ -173,8 +176,11 @@ impl Duration {
     /// assert!(!0.seconds().is_negative());
     /// assert!(!1.seconds().is_negative());
     /// ```
+    ///
+    /// This function is `const fn` when using rustc >= 1.46.
+    #[const_fn("1.46")]
     pub const fn is_negative(self) -> bool {
-        (self.seconds < 0) | (self.nanoseconds < 0)
+        self.seconds < 0 || self.nanoseconds < 0
     }
 
     /// Check if a duration is positive.
@@ -185,8 +191,11 @@ impl Duration {
     /// assert!(!0.seconds().is_positive());
     /// assert!(!(-1).seconds().is_positive());
     /// ```
+    ///
+    /// This function is `const fn` when using rustc >= 1.46.
+    #[const_fn("1.46")]
     pub const fn is_positive(self) -> bool {
-        (self.seconds > 0) | (self.nanoseconds > 0)
+        self.seconds > 0 || self.nanoseconds > 0
     }
 
     /// Get the absolute value of the duration.
